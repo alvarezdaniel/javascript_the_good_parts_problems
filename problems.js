@@ -182,3 +182,25 @@ function curry(func, ...first) {
     return func(...first, ...second);
   }
 }
+
+// Problem 7
+// Without writing any new functions, show three ways to create
+// the inc function
+
+inc(5)      // 6
+inc(inc(5)) // 7
+
+function add(x, y) {
+  return x + y;
+}
+
+var inc = function(func, x) {
+  return function(y) {
+    return func(x, y);
+  }
+}
+
+alert(inc(5));      // 6
+alert(inc(inc(5))); // 7
+
+// NO
