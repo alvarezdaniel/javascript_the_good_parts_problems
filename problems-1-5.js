@@ -67,3 +67,26 @@ function identityf(x) {
 
 idf = identityf(3);
 alert(idf());
+
+// Problem 4
+// Write a function that adds from two invocations
+
+addf(3)(4) // 7
+
+function addf(x) {
+  var sum = x;
+  return function() {
+    sum = sum + x;
+    return sum;
+  }
+}
+
+alert(addf(3)(4));
+
+function addf(x) {
+  return function(y) {
+    return x + y;
+  }
+}
+
+alert(addf(3)(4));
