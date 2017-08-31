@@ -126,3 +126,59 @@ function applyf(binary) {
     }
   }
 }
+
+// Problem 6
+// Write a function that takes a function and an argument,
+// and returns a function that can supply a second argument
+
+add3 = curry(add, 3);
+add3(4) // 7
+
+curry(mul, 5)(6) // 30
+
+function add(x, y) {
+  return x + y;
+}
+
+function mul(x, y) {
+  return x * y;
+}
+
+function curry(f, x) {
+  return function(y) {
+    return f(x, y);
+  }
+}
+
+add3 = curry(add, 3);
+alert(add3(4)); // 7
+
+alert(curry(mul, 5)(6)); // 30
+
+
+function curry(func, first) {
+  return function(second) {
+    return func(first, second);
+  }
+}
+
+function curry(func, first) {
+  return applyf(func)(first);
+}
+
+function curry(func) {
+  var slice = Array.prototype.slice,
+    args = slice.call(arguments, 1);
+  return function() {
+    return func.apply(
+      null,
+      args.concat(slice.call(arguments, 0))
+    );
+  }
+}
+
+function curry(func, ...first) {
+  return function(...second) {
+    return func(...first, ...second);
+  }
+}
