@@ -90,3 +90,39 @@ function addf(x) {
 }
 
 alert(addf(3)(4));
+
+// Problem 5
+// Write a function that takes a binary function, and make it callable
+// with two invocations
+
+addf = applyf(add);
+addf(3)(4)        // 7
+applyf(mul)(5)(6) // 30
+
+function add(x, y) {
+  return x + y;
+}
+
+function mul(x, y) {
+  return x * y;
+}
+
+function applyf(f) {
+  return function(x) {
+    return function(y) {
+      return f(x, y);
+    }
+  }
+}
+
+addf = applyf(add);
+alert(addf(3)(4));         // 7
+alert(applyf(mul)(5)(6));  // 30
+
+function applyf(binary) {
+  return function(x) {
+    return function(y) {
+      return binary(x, y);
+    }
+  }
+}
