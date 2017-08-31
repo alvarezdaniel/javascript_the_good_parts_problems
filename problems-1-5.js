@@ -14,7 +14,7 @@ var identity = function identity(x) {
     return x;
 }
 
-//alert(identity(3));
+alert(identity(3));
 
 // Problem 2
 // Write two binary functions, add and mul, that take two numbers
@@ -30,8 +30,8 @@ var mul = function mul(a, b) {
   return a * b;
 }
 
-//alert(add(3, 4));
-//alert(mul(3, 4));
+alert(add(3, 4));
+alert(mul(3, 4));
 
 function add(x, y) {
   return x + y;
@@ -47,3 +47,23 @@ function mul(x, y) {
 
 idf = identityf(3);
 idf() // 3
+
+
+function identityf(x) {
+  return function(x) {
+    return x;
+  }
+}
+
+idf = identityf(3);
+alert(idf());
+
+
+function identityf(x) {
+  return function() {
+    return x;
+  }
+}
+
+idf = identityf(3);
+alert(idf());
